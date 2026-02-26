@@ -23,8 +23,8 @@
     "build": "npx rimraf dist && tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
+    "lint": "eslint nodes credentials --ext .ts && eslint package.json",
+    "lintfix": "eslint nodes credentials --ext .ts --fix && eslint package.json --fix",
     "prepublishOnly": "npm run build && npm run lint"
   },
   "files": [
