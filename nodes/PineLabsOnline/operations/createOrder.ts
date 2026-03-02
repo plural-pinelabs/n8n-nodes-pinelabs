@@ -73,26 +73,12 @@ export const createOrderDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Pre Auth',
-				name: 'preAuth',
-				type: 'boolean',
-				default: false,
-				description: 'Enable pre-authorization for the order',
-			},
-			{
 				displayName: 'Allowed Payment Methods',
 				name: 'allowedPaymentMethods',
 				type: 'multiOptions',
 				options: PAYMENT_METHOD_OPTIONS,
 				default: [],
 				description: 'Payment methods to offer customers',
-			},
-			{
-				displayName: 'Notes',
-				name: 'notes',
-				type: 'string',
-				default: '',
-				description: 'Note to associate with the order',
 			},
 			{
 				displayName: 'Callback URL',
@@ -109,6 +95,20 @@ export const createOrderDescription: INodeProperties[] = [
 				description: 'Failure callback URL for customer redirection',
 			},
 			{
+				displayName: 'Notes',
+				name: 'notes',
+				type: 'string',
+				default: '',
+				description: 'Note to associate with the order',
+			},
+			{
+				displayName: 'Pre Auth',
+				name: 'preAuth',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to enable pre-authorization for the order',
+			},
+			{
 				displayName: 'Purchase Details',
 				name: 'purchaseDetails',
 				type: 'fixedCollection',
@@ -122,183 +122,177 @@ export const createOrderDescription: INodeProperties[] = [
 						name: 'details',
 						values: [
 							{
-								displayName: 'Customer Email',
-								name: 'customerEmail',
-								type: 'string',
-								default: '',
-								description: "Customer's email address (max 50 chars)",
-							},
-							{
-								displayName: 'Customer First Name',
-								name: 'customerFirstName',
-								type: 'string',
-								default: '',
-								description: "Customer's first name (max 50 chars)",
-							},
-							{
-								displayName: 'Customer Last Name',
-								name: 'customerLastName',
-								type: 'string',
-								default: '',
-								description: "Customer's last name (max 50 chars)",
-							},
-							{
-								displayName: 'Customer ID',
-								name: 'customerId',
-								type: 'string',
-								default: '',
-								description: 'Unique identifier of the customer in your system (max 19 chars)',
-							},
-							{
-								displayName: 'Customer Mobile Number',
-								name: 'customerMobileNumber',
-								type: 'string',
-								default: '',
-								description: "Customer's mobile number (10-20 digits)",
-							},
-							{
-								displayName: 'Country Code',
-								name: 'countryCode',
-								type: 'string',
-								default: DEFAULT_VALUES.COUNTRY_CODE,
-								description: 'Country code of the mobile number',
-								placeholder: '91',
-							},
-							{
-								displayName: 'Billing Address',
-								name: 'billingAddress',
-								type: 'fixedCollection',
-								default: {},
-								typeOptions: {
-									multipleValues: false,
-								},
-								options: [
+						displayName: 'Billing Address',
+						name: 'billingAddress',
+						type: 'fixedCollection',
+						default: {},
+						options: [
 									{
 										displayName: 'Address',
 										name: 'address',
-										values: [
-											{
+											values:	[
+													{
 												displayName: 'Address Line 1',
 												name: 'address1',
 												type: 'string',
 												default: '',
 												description: 'Billing address line 1 (max 100 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Address Line 2',
 												name: 'address2',
 												type: 'string',
 												default: '',
 												description: 'Billing address line 2 (max 100 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Address Line 3',
 												name: 'address3',
 												type: 'string',
 												default: '',
 												description: 'Billing address line 3 (max 100 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Pincode',
 												name: 'pincode',
 												type: 'string',
 												default: '',
 												description: 'Pincode (6-10 digits)',
 												placeholder: '400001',
-											},
-											{
+													},
+													{
 												displayName: 'City',
 												name: 'city',
 												type: 'string',
 												default: '',
 												description: 'City (max 50 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'State',
 												name: 'state',
 												type: 'string',
 												default: '',
 												description: 'State (max 50 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Country',
 												name: 'country',
 												type: 'string',
 												default: '',
 												description: 'Country (max 50 chars)',
-											},
-										],
+													},
+												]
 									},
-								],
+					]
 							},
 							{
-								displayName: 'Shipping Address',
-								name: 'shippingAddress',
-								type: 'fixedCollection',
-								default: {},
-								typeOptions: {
-									multipleValues: false,
-								},
-								options: [
+						displayName: 'Country Code',
+						name: 'countryCode',
+						type: 'string',
+						default: '',
+						description: 'Country code of the mobile number',
+						placeholder: '91',
+							},
+							{
+						displayName: 'Customer Email',
+						name: 'customerEmail',
+						type: 'string',
+						default: '',
+						description: 'Customer\'s email address (max 50 chars)',
+							},
+							{
+						displayName: 'Customer First Name',
+						name: 'customerFirstName',
+						type: 'string',
+						default: '',
+						description: 'Customer\'s first name (max 50 chars)',
+							},
+							{
+						displayName: 'Customer ID',
+						name: 'customerId',
+						type: 'string',
+						default: '',
+						description: 'Unique identifier of the customer in your system (max 19 chars)',
+							},
+							{
+						displayName: 'Customer Last Name',
+						name: 'customerLastName',
+						type: 'string',
+						default: '',
+						description: 'Customer\'s last name (max 50 chars)',
+							},
+							{
+						displayName: 'Customer Mobile Number',
+						name: 'customerMobileNumber',
+						type: 'string',
+						default: '',
+						description: 'Customer\'s mobile number (10-20 digits)',
+							},
+							{
+						displayName: 'Shipping Address',
+						name: 'shippingAddress',
+						type: 'fixedCollection',
+						default: {},
+						options: [
 									{
 										displayName: 'Address',
 										name: 'address',
-										values: [
-											{
+											values:	[
+													{
 												displayName: 'Address Line 1',
 												name: 'address1',
 												type: 'string',
 												default: '',
 												description: 'Shipping address line 1 (max 100 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Address Line 2',
 												name: 'address2',
 												type: 'string',
 												default: '',
 												description: 'Shipping address line 2 (max 100 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Address Line 3',
 												name: 'address3',
 												type: 'string',
 												default: '',
 												description: 'Shipping address line 3 (max 100 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Pincode',
 												name: 'pincode',
 												type: 'string',
 												default: '',
 												description: 'Pincode (6-10 digits)',
 												placeholder: '400001',
-											},
-											{
+													},
+													{
 												displayName: 'City',
 												name: 'city',
 												type: 'string',
 												default: '',
 												description: 'City (max 50 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'State',
 												name: 'state',
 												type: 'string',
 												default: '',
 												description: 'State (max 50 chars)',
-											},
-											{
+													},
+													{
 												displayName: 'Country',
 												name: 'country',
 												type: 'string',
 												default: '',
 												description: 'Country (max 50 chars)',
-											},
-										],
+													},
+											]
 									},
-								],
+					]
 							},
-						],
+					],
 					},
 				],
 			},
@@ -317,8 +311,8 @@ export async function executeCreateOrder(
 		itemIndex,
 	) as string;
 
-	validateAmount(orderAmount);
-	validateMerchantReference(merchantOrderReference);
+	validateAmount(this, itemIndex, orderAmount);
+	validateMerchantReference(this, itemIndex, merchantOrderReference);
 
 	const additionalOptions = this.getNodeParameter('additionalOptions', itemIndex, {}) as IDataObject;
 

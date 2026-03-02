@@ -5,7 +5,7 @@ export class PineLabsOnlineApi implements ICredentialType {
 
 	displayName = 'Pine Labs Online API';
 
-	documentationUrl = 'httpsDocsN8nIoIntegrationsBuiltinCredentialsPinelabs';
+	documentationUrl = 'https://developer.pinelabsonline.com/reference/generate-token';
 
 	properties: INodeProperties[] = [
 		{

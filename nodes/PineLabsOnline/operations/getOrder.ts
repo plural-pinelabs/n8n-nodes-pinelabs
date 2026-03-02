@@ -26,7 +26,7 @@ export async function executeGetOrder(
 ): Promise<IDataObject> {
 	const orderId = this.getNodeParameter('orderId', itemIndex) as string;
 
-	validateOrderId(orderId);
+	validateOrderId(this, itemIndex, orderId);
 
 	const response = await pineLabsApiRequest(
 		this,

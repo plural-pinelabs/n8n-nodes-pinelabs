@@ -28,7 +28,7 @@ export async function executeGetPaymentLink(
 	const paymentLinkId = this.getNodeParameter('paymentLinkId', itemIndex) as string;
 
 	// Validate payment link ID
-	validatePaymentLinkId(paymentLinkId);
+	validatePaymentLinkId(this, itemIndex, paymentLinkId);
 
 	// Make API request
 	const response = await pineLabsApiRequest(

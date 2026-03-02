@@ -127,58 +127,12 @@ export const createPaymentLinkDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Description',
-				name: 'description',
-				type: 'string',
-				default: '',
-				description: 'Description corresponding to the payment',
-				placeholder: 'Payment for Order #12345',
-			},
-			{
-				displayName: 'Expire By',
-				name: 'expireBy',
-				type: 'dateTime',
-				default: '',
-				description:
-					'Expiration timestamp for the payment link (must be within 180 days from now)',
-			},
-			{
 				displayName: 'Allowed Payment Methods',
 				name: 'allowedPaymentMethods',
 				type: 'multiOptions',
 				options: PAYMENT_METHOD_OPTIONS,
 				default: [],
 				description: 'Payment methods to offer customers',
-			},
-			{
-				displayName: 'Country Code',
-				name: 'countryCode',
-				type: 'string',
-				default: DEFAULT_VALUES.COUNTRY_CODE,
-				description: 'Country code of the mobile number',
-				placeholder: '91',
-			},
-			{
-				displayName: 'Customer ID',
-				name: 'customerId',
-				type: 'string',
-				default: '',
-				description: 'Unique identifier of the customer in your system (max 19 chars)',
-			},
-			{
-				displayName: 'GSTIN',
-				name: 'gstin',
-				type: 'string',
-				default: '',
-				description: "Customer's GSTIN",
-				placeholder: '27AAEPM1234C1Z5',
-			},
-			{
-				displayName: 'Merchant Customer Reference',
-				name: 'merchantCustomerReference',
-				type: 'string',
-				default: '',
-				description: 'Unique identifier of the customer for the request (max 50 chars)',
 			},
 			{
 				displayName: 'Billing Address',
@@ -242,6 +196,150 @@ export const createPaymentLinkDescription: INodeProperties[] = [
 								type: 'string',
 								default: '',
 								description: 'Country (max 50 chars)',
+							},
+						],
+					},
+				],
+			},
+			{
+				displayName: 'Cart Coupon Currency',
+				name: 'cartCouponCurrency',
+				type: 'string',
+				default: DEFAULT_VALUES.CURRENCY,
+				description: 'Currency type for the cart discount',
+			},
+			{
+				displayName: 'Cart Coupon Discount (Paisa)',
+				name: 'cartCouponDiscount',
+				type: 'number',
+				default: 0,
+				description: 'Cart-level discount amount in Paisa',
+			},
+			{
+				displayName: 'Country Code',
+				name: 'countryCode',
+				type: 'string',
+				default: DEFAULT_VALUES.COUNTRY_CODE,
+				description: 'Country code of the mobile number',
+				placeholder: '91',
+			},
+			{
+				displayName: 'Customer ID',
+				name: 'customerId',
+				type: 'string',
+				default: '',
+				description: 'Unique identifier of the customer in your system (max 19 chars)',
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Description corresponding to the payment',
+				placeholder: 'Payment for Order #12345',
+			},
+			{
+				displayName: 'Expire By',
+				name: 'expireBy',
+				type: 'dateTime',
+				default: '',
+				description:
+					'Expiration timestamp for the payment link (must be within 180 days from now)',
+			},
+			{
+				displayName: 'GSTIN',
+				name: 'gstin',
+				type: 'string',
+				default: '',
+				description: "Customer's GSTIN",
+				placeholder: '27AAEPM1234C1Z5',
+			},
+			{
+				displayName: 'Merchant Customer Reference',
+				name: 'merchantCustomerReference',
+				type: 'string',
+				default: '',
+				description: 'Unique identifier of the customer for the request (max 50 chars)',
+			},
+			{
+				displayName: 'Merchant Metadata',
+				name: 'merchantMetadata',
+				type: 'fixedCollection',
+				default: {},
+				typeOptions: {
+					multipleValues: true,
+				},
+				description: 'Additional key-value pairs for storing custom information',
+				options: [
+					{
+						displayName: 'Metadata',
+						name: 'metadata',
+						values: [
+							{
+								displayName: 'Key',
+								name: 'key',
+								type: 'string',
+								default: '',
+								description: 'Metadata key',
+							},
+							{
+								displayName: 'Value',
+								name: 'value',
+								type: 'string',
+								default: '',
+								description: 'Metadata value',
+							},
+						],
+					},
+				],
+			},
+			{
+				displayName: 'Product Details',
+				name: 'productDetails',
+				type: 'fixedCollection',
+				default: {},
+				typeOptions: {
+					multipleValues: true,
+				},
+				options: [
+					{
+						displayName: 'Product',
+						name: 'product',
+						values: [
+							{
+						displayName: 'Product Amount (Paisa)',
+						name: 'productAmount',
+						type: 'number',
+						default: 0,
+						description: 'Product amount in Paisa',
+							},
+							{
+						displayName: 'Product Code',
+						name: 'productCode',
+						type: 'string',
+						default: '',
+						description: 'Unique product identifier',
+							},
+							{
+						displayName: 'Product Coupon Currency',
+						name: 'productCouponCurrency',
+						type: 'string',
+						default: '',
+						description: 'Currency type for the discount',
+							},
+							{
+						displayName: 'Product Coupon Discount (Paisa)',
+						name: 'productCouponDiscount',
+						type: 'number',
+						default: 0,
+						description: 'Discount amount in Paisa',
+							},
+							{
+						displayName: 'Product Currency',
+						name: 'productCurrency',
+						type: 'string',
+						default: '',
+						description: 'Currency type for the product',
 							},
 						],
 					},
@@ -314,104 +412,6 @@ export const createPaymentLinkDescription: INodeProperties[] = [
 					},
 				],
 			},
-			{
-				displayName: 'Product Details',
-				name: 'productDetails',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: true,
-				},
-				options: [
-					{
-						displayName: 'Product',
-						name: 'product',
-						values: [
-							{
-						displayName: 'Product Amount (Paisa)',
-						name: 'productAmount',
-						type: 'number',
-						default: 0,
-						description: 'Product amount in Paisa',
-							},
-							{
-						displayName: 'Product Code',
-						name: 'productCode',
-						type: 'string',
-						default: '',
-						description: 'Unique product identifier',
-							},
-							{
-						displayName: 'Product Coupon Currency',
-						name: 'productCouponCurrency',
-						type: 'string',
-						default: '',
-						description: 'Currency type for the discount',
-							},
-							{
-						displayName: 'Product Coupon Discount (Paisa)',
-						name: 'productCouponDiscount',
-						type: 'number',
-						default: 0,
-						description: 'Discount amount in Paisa',
-							},
-							{
-						displayName: 'Product Currency',
-						name: 'productCurrency',
-						type: 'string',
-						default: '',
-						description: 'Currency type for the product',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Cart Coupon Discount (Paisa)',
-				name: 'cartCouponDiscount',
-				type: 'number',
-				default: 0,
-				description: 'Cart-level discount amount in Paisa',
-			},
-			{
-				displayName: 'Cart Coupon Currency',
-				name: 'cartCouponCurrency',
-				type: 'string',
-				default: DEFAULT_VALUES.CURRENCY,
-				description: 'Currency type for the cart discount',
-			},
-			{
-				displayName: 'Merchant Metadata',
-				name: 'merchantMetadata',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: true,
-				},
-				description: 'Additional key-value pairs for storing custom information',
-				options: [
-					{
-						displayName: 'Metadata',
-						name: 'metadata',
-						values: [
-							{
-								displayName: 'Key',
-								name: 'key',
-								type: 'string',
-								default: '',
-								description: 'Metadata key',
-							},
-							{
-								displayName: 'Value',
-								name: 'value',
-								type: 'string',
-								default: '',
-								description: 'Metadata value',
-							},
-						],
-					},
-				],
-			},
 		],
 	},
 ];
@@ -433,15 +433,15 @@ export async function executeCreatePaymentLink(
 	const customerMobileNumber = this.getNodeParameter('customerMobileNumber', itemIndex) as string;
 
 	// Validate required fields
-	validateAmount(amount);
-	validateMerchantReference(merchantPaymentLinkReference);
+	validateAmount(this, itemIndex, amount);
+	validateMerchantReference(this, itemIndex, merchantPaymentLinkReference);
 
 	// Read optional parameters
 	const additionalOptions = this.getNodeParameter('additionalOptions', itemIndex, {}) as IDataObject;
 
 	// Validate expire_by if provided
 	if (additionalOptions.expireBy) {
-		validateExpireBy(additionalOptions.expireBy as string);
+		validateExpireBy(this, itemIndex, additionalOptions.expireBy as string);
 	}
 
 	// Build customer object

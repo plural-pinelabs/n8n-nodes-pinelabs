@@ -1,8 +1,8 @@
 plural-apps-common:
-  environment: "uat"
+  environment: "prod"
   replicaCount: 1
   image:
-    registry: 305714281830.dkr.ecr.ap-south-1.amazonaws.com/app-images
+    registry: 222806839213.dkr.ecr.ap-south-1.amazonaws.com/app-images
     pullPolicy: IfNotPresent
 
   annotations:
@@ -24,7 +24,7 @@ plural-apps-common:
     name: "n8n-node"
     annotations: {}
     hosts:
-      - host: n8n-node-uat.v2.pinepg.in
+      - host: n8n-node.pluralpay.in
         paths:
           - path: /
             pathType: Prefix
@@ -39,9 +39,12 @@ plural-apps-common:
       memory: 1000Mi
 
   env:
-    NODE_CONFIG_TS_ENV: uat
-    ENV: "uat-aws"
-    OTEL_SERVICE_NAME: "n8n-node-uat"
+    NODE_CONFIG_TS_ENV: prod
+    ENV: "prod-aws"
+    N8N_HOST: "n8n-node.pluralpay.in"
+    N8N_CUSTOM_EXTENSIONS: "/home/node/.n8n/custom"
+    WEBHOOK_URL: "https://n8n-node.pluralpay.in/"
+    OTEL_SERVICE_NAME: "n8n-node-prod"
     OTEL_EXPORTER_OTLP_ENDPOINT: "https://otlp-aps1.last9.io:443"
     OTEL_EXPORTER_OTLP_AUTHORIZATION: "Basic cGluZWxhYnM6NWZiYmNkZDZlMTc1"
     OTEL_EXPORTER_OTLP_PROTOCOL: "grpc"
@@ -51,5 +54,5 @@ plural-apps-common:
     OTEL_METRICS_EXPORTER: "prometheus"
     OTEL_LOGS_EXPORTER: "none"
     OTEL_TRACES_SAMPLER: "always_on"
-    OTEL_RESOURCE_ATTRIBUTES: "deployment.environment=uat"
+    OTEL_RESOURCE_ATTRIBUTES: "deployment.environment=prod"
     OTEL_LOG_LEVEL: "error"
