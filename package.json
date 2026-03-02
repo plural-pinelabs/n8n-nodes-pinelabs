@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-pinelabs",
-  "version": "0.1.0",
-  "description": "n8n community node for Pine Labs Online Pay by Link",
+  "version": "0.1.4",
+  "description": "n8n community node for Pine Labs Online",
   "keywords": [
     "n8n-community-node-package",
     "n8n",
@@ -13,19 +13,30 @@
   "license": "MIT",
   "author": {
     "name": "Pine Labs",
-    "email": "support@pinelabs.com"
+    "email": "plural-online@pinelabs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plural-pinelabs/n8n-nodes-pinelabs.git"
+  },
+  "homepage": "https://github.com/plural-pinelabs/n8n-nodes-pinelabs",
+  "bugs": {
+    "url": "https://github.com/plural-pinelabs/n8n-nodes-pinelabs/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=20.15"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "npx rimraf dist && tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials --ext .ts && eslint package.json",
-    "lintfix": "eslint nodes credentials --ext .ts --fix && eslint package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint"
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "dist"
@@ -50,6 +61,6 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "n8n-workflow": "^2.6.0"
+    "n8n-workflow": "*"
   }
 }
